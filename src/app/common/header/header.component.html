@@ -1,0 +1,74 @@
+<div class="header">
+  <div class="left">
+    <p>FARRE</p>
+  </div>
+  <div class="center">
+    <button mat-button
+            (click)="scrollToComponent('whoami')"
+            class="button regular">
+      who am i
+    </button>
+    <button mat-button
+            (click)="scrollToComponent('whatcanido')"
+            class="button regular">
+      what can i do
+    </button>
+    <button mat-button
+            (click)="scrollToComponent('whatcaniteach')"
+            class="button regular"
+            [routerLink]="category">
+      what can i teach
+    </button>
+  </div>
+  <div class="right">
+    <a href="https://www.facebook.com/faris.svrakic" target="_blank" class="fa fa-facebook"></a>
+    <a href="https://twitter.com/FarreSvrakic" target="_blank" class="fa fa-twitter"></a>
+    <a href="https://www.linkedin.com/in/faris-svrakic/" target="_blank" class="fa fa-linkedin"></a>
+    <a href="https://www.instagram.com/faris_svrakic/" target="_blank" class="fa fa-instagram"></a>
+  </div>
+</div>
+
+<!--Toolbar small devices-->
+<div class="toolbar">
+  <div class="logo">
+    <p>FARRE</p>
+  </div>
+  <div class="menu">
+    <button class="menu-button" type="button" mat-button (click)="showDiv()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</div>
+<!--Toolbar small devices-->
+
+<div id="myDiv" class="sideNav">
+  <div class="X-button" >
+    <button class="close" type="button" mat-button (click)="hideDiv()">
+      X
+    </button>
+  </div>
+  <div class="navigation-button">
+    <button mat-button
+            (click)="hideDiv(); scrollToComponent('whoami')"
+            class="button regular">
+      who am i
+    </button>
+    <button mat-button
+            (click)="hideDiv(); scrollToComponent('whatcanido')"
+            class="button regular">
+      what can i do
+    </button>
+    <button mat-button
+            (click)="hideDiv(); scrollToComponent('whatcaniteach')"
+            class="button regular"
+            [routerLink]="category">
+      what can i teach
+    </button>
+  </div>
+  <div class="social">
+    <a href="https://www.facebook.com/faris.svrakic" target="_blank" class="fa fa-facebook"></a>
+    <a href="https://twitter.com/FarreSvrakic" target="_blank" class="fa fa-twitter"></a>
+    <a href="https://www.linkedin.com/in/faris-svrakic/" target="_blank" class="fa fa-linkedin"></a>
+    <a href="https://www.instagram.com/faris_svrakic/" target="_blank" class="fa fa-instagram"></a>
+  </div>
+</div>

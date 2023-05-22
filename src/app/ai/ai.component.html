@@ -1,0 +1,24 @@
+<div class="ai">
+  <div *ngIf="user != undefined">
+    <p>First name: {{user[userProperty.firstName]}}</p>
+    <p>Last name: {{user[userProperty.lastName]}}</p>
+    <p>Birthday: {{user[userProperty.birthday]}}</p>
+    <p>City: {{user[userProperty.city]}}</p>
+    <p>Country: {{user[userProperty.country]}}</p>
+  </div>
+  <div class="text">
+
+
+    <input *ngIf="transcript != '' || typing == true" [(ngModel)]="transcript">
+  </div>
+  <div class="buttons">
+    <button class="button green" *ngIf="transcript != ''" [@fadeIn] [@fadeOut] (click)="create()">Create</button>
+    <button *ngIf="transcript == '' || typing == false" [@fadeIn] [@fadeOut] class="button white"></button>
+    <button class="button white" (click)="startRecognition()">Speak</button>
+    <button *ngIf="transcript == '' || typing == false" [@fadeIn] [@fadeOut] class="button white" (click)="enableTyping()">Type in</button>
+    <button class="button red" *ngIf="transcript != ''" [@fadeIn] [@fadeOut] (click)="deleteTranscript()">Cancel</button>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,73 @@
+.who-am-i{
+  padding: 0 5% 100px;
+  display: flex;
+  flex-direction: row;
+}
+img{
+  width: 500px;
+  box-shadow: 0 0 13px 3px black;
+}
+p{
+  width: 100%;
+  font-size: 40px;
+  font-style: italic;
+  display: flex;
+  color: #636363;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .who-am-i{
+    padding: 0 10% 100px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  img{
+    width: 100%;
+    max-width: 450px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .who-am-i{
+    padding: 0 10% 100px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  img{
+    width: 100%;
+    max-width: 450px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .who-am-i{
+    padding: 0 10% 100px;
+    display: flex;
+    flex-direction: row;
+  }
+  img{
+    width: 400px;
+    max-width: 400px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  img{
+    width: 500px;
+    max-width: 500px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1280px and up) */
+@media only screen and (min-width: 1280px) {
+
+}
