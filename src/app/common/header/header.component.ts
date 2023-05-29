@@ -33,11 +33,17 @@ export class HeaderComponent implements OnInit {
   }
 
   scrollToComponent(componentId: string): void {
+    if (window.location.href !== 'https://www.thefarre.com') {
+      window.location.href = 'https://www.thefarre.com/#' + componentId;
+    }
+
     const targetComponent = document.getElementById(componentId);
-    // @ts-ignore
-    const targetComponentPosition = targetComponent.offsetTop - 30;
-    this.renderer.setProperty(document.documentElement, 'scrollTop', targetComponentPosition);
+    if (targetComponent) {
+      const targetComponentPosition = targetComponent.offsetTop - 30;
+      this.renderer.setProperty(document.documentElement, 'scrollTop', targetComponentPosition);
+    }
   }
+
 
   showDiv() {
     var div = document.getElementById("myDiv");

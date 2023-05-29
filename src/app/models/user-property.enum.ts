@@ -1,12 +1,12 @@
 export enum UserProperty {
   id = 'id',
   email = 'email',
-  password = 'password',
   firstName = 'firstName',
   lastName = 'lastName',
-  username = 'username',
   birthday = 'birthday',
   city = 'city',
   country = 'country',
-  admin = 'admin',
+  phone = 'phoneNumber',
+  user_id = 'user_id',
+  audio_file = 'audio_file',
 }

@@ -9,15 +9,34 @@
   color: white;
 }
 
-.text{
-  margin: 20px;
-  height: 65px;
+.user-profile{
+  font-size: 25px;
+  margin: 0 50px;
+  height: 250px;
 }
 
-.text input{
+.message{
+  font-size: 35px;
+  height: 250px;
+  width: 500px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.user-profile p{
+  margin: 0;
+}
+
+.text{
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.text textarea{
   background: transparent;
   color: #cccccc;
-  height: 65px;
+  height: auto;
   width: 500px;
   border: 1px solid;
   text-align: center;
@@ -27,20 +46,28 @@
 
 .buttons{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 400px;
+  height: 160px;
 }
 
 .button{
   font-size: 25px;
   height: 60px;
-  width: 100px;
-  min-width: 100px;
-  margin: 0 10px;
+  width: 110px;
+  min-width: 110px;
+  margin: 10px 10px;
   background: transparent;
   border-radius: 7px;
   border: 2px solid;
   color: #cccccc;
+}
+
+.upper{
+  display: flex;
+  flex-direction: row;;
 }
 
 .red{
@@ -51,4 +78,62 @@
 .green{
   border: 2px solid;
   color: #108a10;
+}
+
+.yellow{
+  border: 2px solid;
+  color: #e3af00;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .message{
+    font-size: 25px;
+    height: 250px;
+    width: 96%;
+    min-width: 275px;
+    margin: 0 20px
+  }
+
+  .text{
+    width: 100%;
+  }
+
+  .text textarea{
+    width: 96%;
+    min-width: 275px;
+    font-size: 28px;
+  }
+
+  .buttons{
+    width: 300px;
+  }
+
+  .button{
+    width: 75px;
+    height: 50px;
+    font-size: 20px;
+    min-width: 75px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1280px and up) */
+@media only screen and (min-width: 1280px) {
+
 }
