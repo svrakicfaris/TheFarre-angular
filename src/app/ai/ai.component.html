@@ -1,24 +1,54 @@
-<div class="ai">
-  <div *ngIf="user != undefined">
-    <p>First name: {{user[userProperty.firstName]}}</p>
-    <p>Last name: {{user[userProperty.lastName]}}</p>
-    <p>Birthday: {{user[userProperty.birthday]}}</p>
-    <p>City: {{user[userProperty.city]}}</p>
-    <p>Country: {{user[userProperty.country]}}</p>
+<div *ngIf="email" class="ai">
+  <div style="display: flex; flex-direction: row">
+    <div *ngIf="hasNew" class="user-profile">
+      <p>New profile</p>
+      <p>First name: {{newProfile[userProperty.firstName]}}</p>
+      <p>Last name: {{newProfile[userProperty.lastName]}}</p>
+      <p>Birthday: {{newProfile[userProperty.birthday]}}</p>
+      <p>City: {{newProfile[userProperty.city]}}</p>
+      <p>Country: {{newProfile[userProperty.country]}}</p>
+      <p>Phone: {{newProfile[userProperty.phone]}}</p>
+    </div>
+    <div *ngIf="hasExisting" class="user-profile">
+      <p>Existing voice match</p>
+      <p>First name: {{existingProfile[userProperty.firstName]}}</p>
+      <p>Last name: {{existingProfile[userProperty.lastName]}}</p>
+      <p>Birthday: {{existingProfile[userProperty.birthday]}}</p>
+      <p>City: {{existingProfile[userProperty.city]}}</p>
+      <p>Country: {{existingProfile[userProperty.country]}}</p>
+      <p>Phone: {{existingProfile[userProperty.phone]}}</p>
+    </div>
   </div>
+  <div *ngIf="newProfile == undefined" class="message">
+    <p>Introduce yourself: first and last name, date of birth, country and city you live in, and phone number...</p>
+  </div>
+
   <div class="text">
-
-
-    <input *ngIf="transcript != '' || typing == true" [(ngModel)]="transcript">
+    <textarea *ngIf="transcript != '' || typing == true" [(ngModel)]="transcript" placeholder="My name is John Doe, I live in London, United Kingdom, and I was born on 27th May 1976."></textarea>
   </div>
+
   <div class="buttons">
-    <button class="button green" *ngIf="transcript != ''" [@fadeIn] [@fadeOut] (click)="create()">Create</button>
-    <button *ngIf="transcript == '' || typing == false" [@fadeIn] [@fadeOut] class="button white"></button>
-    <button class="button white" (click)="startRecognition()">Speak</button>
-    <button *ngIf="transcript == '' || typing == false" [@fadeIn] [@fadeOut] class="button white" (click)="enableTyping()">Type in</button>
-    <button class="button red" *ngIf="transcript != ''" [@fadeIn] [@fadeOut] (click)="deleteTranscript()">Cancel</button>
+    <div class="upper">
+      <button class="button green" [disabled]="!recordedAudio && !transcript" (click)="generateProfile()">Create</button>
+      <button class="button white" (click)="startRecording()">Speak</button>
+      <button class="button white" (click)="stopRecording()">Stop</button>
+      <button class="button red" [disabled]="!recordedAudio && !transcript" (click)="deleteRecording()">Cancel</button>
+    </div>
+
+    <div class="lower">
+      <button class="button white" [disabled]="recordedAudio || transcript" (click)="enableTyping()">Type in</button>
+      <button class="button yellow" [disabled]="!recordedAudio && !transcript" (click)="saveProfile()">Save Profile</button>
+    </div>
   </div>
+</div>
 
-
-
+<div *ngIf="email == ''" class="email">
+  <form [formGroup]="emailForm">
+    <input type="email" formControlName="email" placeholder="Email">
+    <div *ngIf="emailForm.get('email')?.invalid && emailForm.get('email')?.touched">
+      <div *ngIf="emailForm.get('email')?.hasError('required')">Email is required.</div>
+      <div *ngIf="emailForm.get('email')?.hasError('pattern')">Invalid email format.</div>
+    </div>
+    <button type="submit" [disabled]="emailForm.invalid" (click)="submitEmail()">Submit</button>
+  </form>
 </div>
