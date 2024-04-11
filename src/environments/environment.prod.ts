@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  backendUrl: 'https://www.thefarre.com/py/ai',
+  pythonUrl: 'https://www.thefarre.com/py',
+  localNodeUrl: 'https://www.node.thefarre.com',
+  serverNodeUrl: 'https://www.node.thefarre.com',
 };

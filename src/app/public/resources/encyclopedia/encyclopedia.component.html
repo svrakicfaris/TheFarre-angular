@@ -1,0 +1,42 @@
+<div class="encyclopedia">
+  <div class="categories" *ngIf="!selectedCategory">
+    <h2>Categories</h2>
+    <div class="categories-list">
+      <div  class="category-container" *ngFor="let category of categories" (click)="selectCategory(category)">
+        {{ category.name }}
+      </div>
+    </div>
+  </div>
+
+  <div class="category-info" *ngIf="selectedCategory">
+    <div class="left">
+      <button class="button" (click)="deselectCategory()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <ng-container *ngTemplateOutlet="recursiveAccordion; context: { subcategories: selectedCategory.subCategories }"></ng-container>
+    </div>
+    <div class="right">
+      <div class="" *ngIf="this.selectedTopic">
+        <div class="lecture-header">
+          <h2>{{ this.selectedTopic.name}}</h2>
+        </div>
+        <div [innerHTML]="this.html">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #recursiveAccordion let-subcategories='subcategories'>
+  <div class="subcategory-list">
+    <div *ngFor="let subcategory of subcategories" class="subcategory">
+      <div class="subcategory-header" (click)="toggleSubcategory(subcategory); selectTopic(subcategory)">
+        {{ subcategory.name }}
+      </div>
+      <div *ngIf="subcategory.expanded && subcategory.subCategories">
+        <ng-container *ngTemplateOutlet="recursiveAccordion; context: { subcategories: subcategory.subCategories }"></ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

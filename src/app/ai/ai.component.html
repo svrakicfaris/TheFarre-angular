@@ -7,7 +7,7 @@
       <p>Birthday: {{newProfile[userProperty.birthday]}}</p>
       <p>City: {{newProfile[userProperty.city]}}</p>
       <p>Country: {{newProfile[userProperty.country]}}</p>
-      <p>Phone: {{newProfile[userProperty.phone]}}</p>
+      <p *ngIf="newProfile[userProperty.phone]">Phone: {{newProfile[userProperty.phone]}}</p>
     </div>
     <div *ngIf="hasExisting" class="user-profile">
       <p>Existing voice match</p>
@@ -16,7 +16,7 @@
       <p>Birthday: {{existingProfile[userProperty.birthday]}}</p>
       <p>City: {{existingProfile[userProperty.city]}}</p>
       <p>Country: {{existingProfile[userProperty.country]}}</p>
-      <p>Phone: {{existingProfile[userProperty.phone]}}</p>
+      <p *ngIf="newProfile[userProperty.phone]">Phone: {{existingProfile[userProperty.phone]}}</p>
     </div>
   </div>
   <div *ngIf="newProfile == undefined" class="message">
@@ -29,9 +29,15 @@
 
   <div class="buttons">
     <div class="upper">
-      <button class="button green" [disabled]="!recordedAudio && !transcript" (click)="generateProfile()">Create</button>
-      <button class="button white" (click)="startRecording()">Speak</button>
-      <button class="button white" (click)="stopRecording()">Stop</button>
+      <button class="button green" [disabled]="!recordedAudio && !transcript" (click)="generateProfile()">
+        <span *ngIf="recording">Creating...</span>
+        <span *ngIf="!recording">Create</span>
+      </button>
+      <button class="button white" (click)="startRecording()" [disabled]="recording">
+        <span *ngIf="!recording">Speak</span>
+        <span *ngIf="recording">Recording...</span>
+      </button>
+      <button class="button white" (click)="stopRecording()" [disabled]="!recording">Stop</button>
       <button class="button red" [disabled]="!recordedAudio && !transcript" (click)="deleteRecording()">Cancel</button>
     </div>
 

@@ -1,0 +1,167 @@
+.principles{
+  padding: 0 5% 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top{
+  color: #bebebe;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.top h2{
+  color: #bebebe;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.bottom{
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom .text{
+  padding: 40px 50px;
+  text-align: center;
+  color: #c6c6c6;
+  display: flex;
+  text-transform: uppercase;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom .text h3{
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #c6c6c6;
+  -webkit-text-stroke: 0.5px #c6c6c6;
+}
+
+.bottom .text p{
+  width: 100%;
+  font-style: italic;
+  align-items: self-end;
+  text-align: justify;
+  color: #7d7d7d;
+}
+
+.bottom .text button{
+  background-color: #08324b;
+  width: fit-content;
+  font-size: 25px;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  border: 0;
+  letter-spacing: 1px;
+  font-weight: 100;
+  color: #e2e2e2;
+  -webkit-text-stroke: 1px #e2e2e2;
+}
+
+img{
+  width: 100%;
+  box-shadow: 0 0 13px 3px black;
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .principles{
+    padding: 25px 5% 75px;
+  }
+  .bottom{
+    flex-direction: column;
+    align-items: center;
+  }
+  .bottom .text{
+    padding: 0 0 40px;
+  }
+  h2{
+    text-align: center;
+    font-size: 50px;
+  }
+  h3{
+    font-size: 35px;
+  }
+  p{
+    font-size: 22px;
+
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .principles{
+    padding: 0 5% 75px;
+    align-items: center;
+  }
+  h2{
+    font-size: 50px;
+  }
+
+  h3{
+    font-size: 30px;
+  }
+  p{
+    font-size: 20px;
+  }
+  .bottom .image-container{
+    width: 50%
+  }
+  .bottom .text{
+    padding: 40px 40px 40px 0;
+    width: 50%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .principles{
+    padding: 0 8% 100px;
+    display: flex;
+    flex-direction: column;
+  }
+  h2{
+    font-size: 53px;
+  }
+  h3{
+    font-size: 40px;
+  }
+  p{
+    font-size: 25px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .principles{
+    padding: 0 12% 100px;
+  }
+  h2{
+    font-size: 55px;
+  }
+
+  h3{
+    font-size: 42px;
+  }
+  p{
+    font-size: 30px;
+  }
+  .bottom .text{
+    padding: 40px 50px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1280px and up) */
+@media only screen and (min-width: 1280px) {
+  .principles{
+    padding: 0 15% 100px;
+  }
+}

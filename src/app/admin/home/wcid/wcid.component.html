@@ -1,0 +1,61 @@
+<div class="wcid-container">
+  <div class="left">
+    <p>What can i do</p>
+    <div cdkDropList class="drag-drop-list" (cdkDropListDropped)="onDrop($event)">
+      <div class="example-box" *ngFor="let category of categories" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <div class="text">
+          <span class="big">{{ category.work }}&nbsp;</span>
+          <span class="small">{{ category.description }}</span>
+        </div>
+        <div class="options">
+          <button *ngIf="!isEditingCategory; else cancelEdit"
+                  (click)="insertForm(category)"
+                  class="edit-button"
+                  mat-flat-button
+                  color="primary">
+            Edit
+          </button>
+          <button (click)="removeCategory(category._id)"
+                  class="edit-button"
+                  mat-flat-button
+                  color="warn">
+            Delete
+          </button>
+        </div>
+        <ng-template #cancelEdit>
+          <button (click)="cancelEditing()"
+                  class="edit-button"
+                  mat-flat-button
+                  color="warn">
+            Cancel
+          </button>
+        </ng-template>
+      </div>
+    </div>
+    <button (click)="updateCategories()"
+            mat-flat-button
+            color="primary">
+      Upload
+    </button>
+  </div>
+  <div class="right">
+    <h2>{{ isEditingCategory ? 'Edit Entry' : 'Create New Entry' }}</h2>
+    <form (ngSubmit)="handleSubmit()">
+      <div class="input-field">
+        <label for="work">Work:</label>
+        <input type="text" id="work" name="work" [(ngModel)]="work" required>
+      </div>
+      <div class="input-field">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" [(ngModel)]="description" required>
+      </div>
+      <div class="input-field">
+        <label for="url">URL:</label>
+        <input type="text" id="url" name="url" [(ngModel)]="url" required>
+      </div>
+      <button type="submit">{{ isEditingCategory ? 'Update' : 'Create' }}</button>
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,65 @@
+.header{
+  height: 58px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: #3b3b3b 1px solid;
+  color: #afafaf;
+}
+
+.button{
+  font-family: "Naratif Condensed", 'Oswald', sans-serif;
+  font-weight: 100;
+}
+
+.short{
+
+}
+
+.long {
+  width: 25%;
+  font-size: 50px;
+}
+
+.profile-image {
+  width: 45px;
+  height: 45px;
+  border: solid 1px #424242;
+  border-radius: 50%;
+}
+
+.account-icon {
+  background: #afafaf;
+  color: #222222;
+  opacity: 0.4;
+  font-size: 50px;
+  display: flex;
+  width: 45px;
+  height: 45px;
+  border-radius: 60px;
+  border: 0 solid;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+/* Extra large devices (large laptops and desktops, 1280px and up) */
+@media only screen and (min-width: 1280px) {
+
+}

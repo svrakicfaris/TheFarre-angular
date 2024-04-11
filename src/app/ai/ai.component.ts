@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { UserService } from "../service/user.service";
-import { User } from "../models/user.model";
-import { UserProperty } from "../models/user-property.enum";
+import { PersonService } from "../service/person.service";
+import { Person } from "../models/person.model";
+import { PersonProperty } from "../models/person-property.enum";
 import { Subscription } from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
@@ -25,11 +25,11 @@ export class AiComponent implements OnDestroy {
 
   public email: string = "";
   emailForm!: FormGroup;
-  public newProfile!: User;
+  public newProfile!: Person;
   public hasNew: boolean = false;
-  public existingProfile!: User;
+  public existingProfile!: Person;
   public hasExisting: boolean = false;
-  public userProperty = UserProperty;
+  public userProperty = PersonProperty;
   public typing: boolean = false;
   private recognition: any;
   private subscription!: Subscription;
@@ -45,7 +45,7 @@ export class AiComponent implements OnDestroy {
 
 
   constructor(
-    public userService: UserService,
+    public userService: PersonService,
     private changeDetectorRef: ChangeDetectorRef,
     private http: HttpClient,
   ) {
@@ -121,7 +121,7 @@ export class AiComponent implements OnDestroy {
         formData.append('audio', audioFileWithMetadata);
         formData.append('email', email);
 
-        this.http.post<User>(`${environment.backendUrl}/audio`, formData)
+        this.http.post<Person>(`${environment.pythonUrl}/audio`, formData)
           .subscribe(response => {
             console.log(response);
             // Handle the response from the backend
@@ -177,7 +177,7 @@ export class AiComponent implements OnDestroy {
     formData.append('email', email);
     formData.append('text', text);
 
-    this.http.post<User>(`${environment.backendUrl}/text`, formData)
+    this.http.post<Person>(`${environment.pythonUrl}/text`, formData)
       .subscribe(response => {
         console.log(response);
         // Handle the response from the backend
@@ -203,7 +203,7 @@ export class AiComponent implements OnDestroy {
   }
 
   saveProfile() {
-    this.http.post<any>(`${environment.backendUrl}/save`, this.newProfile)
+    this.http.post<any>(`${environment.pythonUrl}/save`, this.newProfile)
       .subscribe(response => {
         console.log(response);
         // Handle the response from the backend
@@ -324,13 +324,16 @@ export class AiComponent implements OnDestroy {
     const numOfChannels = audioBuffer.numberOfChannels;
     const sampleRate = audioBuffer.sampleRate;
     const length = audioBuffer.length;
-    const buffer = new ArrayBuffer(44 + length * 2);
+    const blockAlign = numOfChannels * 2; // 2 bytes per sample for 16-bit audio (numOfChannels * bytesPerSample)
+    const byteRate = sampleRate * blockAlign;
+    const dataSize = length * blockAlign;
+    const buffer = new ArrayBuffer(44 + dataSize);
     const view = new DataView(buffer);
 
     // RIFF identifier
     this.writeString(view, 0, 'RIFF');
     // RIFF chunk length
-    view.setUint32(4, 36 + length * 2, true);
+    view.setUint32(4, 36 + dataSize, true);
     // RIFF type
     this.writeString(view, 8, 'WAVE');
     // format chunk identifier
@@ -344,15 +347,15 @@ export class AiComponent implements OnDestroy {
     // sample rate
     view.setUint32(24, sampleRate, true);
     // byte rate (sample rate * block align)
-    view.setUint32(28, sampleRate * 4, true);
+    view.setUint32(28, byteRate, true);
     // block align (channels * bytes per sample)
-    view.setUint16(32, numOfChannels * 2, true);
+    view.setUint16(32, blockAlign, true);
     // bits per sample
     view.setUint16(34, 16, true);
     // data chunk identifier
     this.writeString(view, 36, 'data');
     // data chunk length
-    view.setUint32(40, length * 2, true);
+    view.setUint32(40, dataSize, true);
 
     // write the PCM samples
     const channelData = [];
@@ -372,6 +375,7 @@ export class AiComponent implements OnDestroy {
 
     return buffer;
   }
+
 
   writeString(view: DataView, offset: number, value: string) {
     for (let i = 0; i < value.length; i++) {

@@ -1,0 +1,44 @@
+<div class="courses">
+  <div class="course-list">
+    <ul>
+      <li *ngFor="let course of courses" (click)="selectCourse(course)" [class.selected]="isCourseSelected(course)">
+        {{ course.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="course-description" *ngIf="selectedCourse">
+    <mat-accordion>
+      <ng-container *ngFor="let module of selectedCourse.modules">
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ module.name }}
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon *ngIf="isModuleCompleted(module._id)" style="color: #00d400;">check</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="lessons">
+            <div class="lesson" *ngFor="let lecture of module.lectures; index as lectureIndex">
+              <p class="text">{{ lecture.name }}</p>
+              <button *ngIf="isPreviousLectureCompleted(module, lectureIndex) === 'check'" class="button done">
+                <mat-icon style="color: #00d400;">check</mat-icon>
+              </button>
+              <button *ngIf="isPreviousLectureCompleted(module, lectureIndex) === 'button'"
+                      class="button current">
+                Take lesson
+              </button>
+              <button *ngIf="isPreviousLectureCompleted(module, lectureIndex) === 'null'" class="button blocked">
+                Take lesson
+              </button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+  </div>
+</div>

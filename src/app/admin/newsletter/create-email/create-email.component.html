@@ -1,0 +1,36 @@
+<div class="form-container">
+  <form (submit)="submitForm()" class="email-upload-form">
+
+
+    <div class="upload-left">
+      <div class="input-field">
+        <label class="label" for="subject">Subject:</label>
+        <input class="input" type="text" id="subject" name="emailSubject" [(ngModel)]="subject" required>
+      </div>
+
+      <div class="input-field">
+        <label class="label">Text:</label>
+        <angular-editor
+          [(ngModel)]="text"
+          [ngModelOptions]="{standalone: true}"
+          [config]="editorConfig">
+        </angular-editor>
+      </div>
+    </div>
+
+    <div class="upload-right">
+      <div class="input-field">
+        <label class="label" for="date">Schedule Date:</label>
+        <input class="input" type="date" id="date" name="scheduleDate" [(ngModel)]="scheduleDate" required>
+      </div>
+      <div class="input-field">
+        <label class="label" for="time">Schedule Time:</label>
+        <input class="input" type="time" id="time" name="scheduleTime" [(ngModel)]="scheduleTime" required>
+      </div>
+
+      <button class="regular button" *ngIf="this.emailId" type="submit">Update Newsletter</button>
+      <button class="regular button" *ngIf="!this.emailId" type="submit">Create Newsletter</button>
+      <button class="special button" (click)="sendNow()" type="button">SEND NOW</button>
+    </div>
+  </form>
+</div>

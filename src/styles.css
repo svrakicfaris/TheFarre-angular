@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  background-color: #222222;
+  background-color: #19181a;
   font-family: "Naratif Condensed", 'Oswald', sans-serif;
   font-weight: 100;
+}
+
+/*Styles for snackbar*/
+.success-snackbar{
+  background-color: #417742 !important;
+}
+
+.error-snackbar{
+  background-color: #6d3232 !important;
+}
+
+.mat-simple-snackbar-action{
+  color: #000000;
 }

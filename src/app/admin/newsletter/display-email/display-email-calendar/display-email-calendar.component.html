@@ -1,0 +1,50 @@
+<div *ngIf="selectedView === 'calendar'" class="calendar">
+  <div class="months">
+    <button class="months-button" (click)="changeMonth('previous')">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <h2>{{ getMonthName(selectedMonth) }} {{this.currentYear}}</h2>
+    <button class="months-button" (click)="changeMonth('next')">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      <th>Thu</th>
+      <th>Fri</th>
+      <th>Sat</th>
+      <th>Sun</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let week of calendar">
+      <tr>
+        <ng-container *ngFor="let day of week">
+          <td [ngClass]="{ 'today': day.today, 'currentMonth': day.isCurrentMonth, 'otherMonth': !day.isCurrentMonth }">
+            <div class="day-container">
+              <p>
+                {{ day.date.getDate() }}
+              </p>
+              <div class="email">
+                <ng-container *ngIf="emails">
+                  <ng-container *ngFor="let email of emails">
+                    <div *ngIf="isSameDay(email.scheduleDate, day.date)" (click)="openEmailDialog(email)">
+                      <p>{{ email.subject }}</p>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+

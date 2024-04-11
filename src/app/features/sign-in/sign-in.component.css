@@ -1,0 +1,49 @@
+.signup{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 150px 0;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-field{
+  padding-bottom: 20px;
+}
+
+.missing-field{
+  border: 1px solid #9b0000;
+}
+:host ::ng-deep .mat-form-field-wrapper {
+  padding: 0!important;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+  border-top: 0;
+}
+
+input{
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+  background-color: #2b2a2a;
+  color: #cacaca;
+  border: 1px solid #464646;
+  border-radius: 3px;
+  font-size: 23px;
+  font-family: "Naratif Condensed", 'Oswald', sans-serif;
+}
+
+.button-regular{
+  font-size: 23px;
+  background-color: transparent;
+  border: 1px solid #414141;
+  color: #ababab;
+  padding: 0 15px;
+  border-radius: 3px;
+}

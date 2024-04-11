@@ -1,0 +1,18 @@
+<div class="what-can-i-do">
+  <div class="text">
+    <!-- Update your HTML template -->
+    <div class="line" *ngFor="let category of categories">
+      <ng-container *ngIf="category.url; else spanTemplate">
+        <a class="big" [href]="'/' + category.url">{{ category.work }}</a>
+      </ng-container>
+      <ng-template #spanTemplate>
+        <span class="big">{{ category.work }}</span>
+      </ng-template>
+      <span class="small">&nbsp;{{ category.description }}</span>
+    </div>
+  </div>
+  <div class="image">
+    <img src="../../../../assets/Farre4.webp">
+  </div>
+
+</div>

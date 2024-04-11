@@ -1,0 +1,100 @@
+<div class="header">
+  <div class="left">
+    <button class="logo" (click)="redirectTo('')">
+      FARRE
+    </button>
+  </div>
+  <div class="center">
+    <!--check if login-->
+    <button class="button regular" (click)="redirectTo('/gentlemen')">
+      the gentlemen
+    </button>
+
+    <div class="dropdown-container">
+      <button class="button regular" (click)="redirectTo('/utilities')">
+        unilities
+      </button>
+      <div class="dropdown-menu">
+        <button class="button regular" (click)="redirectTo('/encyclopedia')">
+          encyclopedia
+        </button>
+      </div>
+    </div>
+
+    <!-- Add a parent container for the lifestyle dropdown -->
+    <div class="dropdown-container">
+      <button class="button regular">
+        lifestyle
+      </button>
+      <!-- Add the lifestyle menu items inside the dropdown-container div -->
+      <div class="dropdown-menu">
+        <button mat-menu-item class="button regular">soon...</button>
+        <!--<button mat-menu-item class="button regular" (click)="redirectToLifestylePage()">car thoughts</button>
+        <button mat-menu-item class="button regular" (click)="redirectToLifestylePage()">late night thoughts</button>
+        <button mat-menu-item class="button regular" (click)="redirectToLifestylePage()">fashion choices</button>
+        <button mat-menu-item class="button regular" (click)="redirectToLifestylePage()">watches</button>
+        <button mat-menu-item class="button regular" (click)="redirectToLifestylePage()">cars</button>-->
+      </div>
+    </div>
+
+    <!-- Add a parent container for the resources dropdown -->
+    <div class="dropdown-container">
+      <button class="button regular" (click)="redirectTo('/resources')">
+        resources
+      </button>
+    </div>
+  </div>
+
+
+  <!--<div class="right">
+    <a href="https://www.facebook.com/faris.svrakic" target="_blank" class="fa fa-facebook"></a>
+    <a href="https://twitter.com/FarreSvrakic" target="_blank" class="fa fa-twitter"></a>
+    <a href="https://www.linkedin.com/in/faris-svrakic/" target="_blank" class="fa fa-linkedin"></a>
+    <a href="https://www.instagram.com/faris_svrakic/" target="_blank" class="fa fa-instagram"></a>
+  </div>-->
+</div>
+
+<!--Toolbar small devices-->
+<div class="toolbar">
+  <div class="logo">
+    <p>FARRE</p>
+  </div>
+  <div class="menu">
+    <button class="menu-button" type="button" (click)="showDiv()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</div>
+<!--Toolbar small devices-->
+
+<div id="myDiv" class="sideNav">
+  <div class="X-button" >
+    <button class="close" type="button" (click)="hideDiv()">
+      X
+    </button>
+  </div>
+  <div class="navigation-button">
+    <button
+            (click)="hideDiv(); scrollToComponent('whoami')"
+            class="button regular">
+      who am i
+    </button>
+    <button
+            (click)="hideDiv(); scrollToComponent('whatcanido')"
+            class="button regular">
+      what can i do
+    </button>
+    <button
+            (click)="hideDiv(); scrollToComponent('whatcaniteach')"
+            class="button regular"
+            [routerLink]="category">
+      what can i teach
+    </button>
+  </div>
+  <!--<div class="social">
+    <a href="https://www.facebook.com/faris.svrakic" target="_blank" class="fa fa-facebook"></a>
+    <a href="https://twitter.com/FarreSvrakic" target="_blank" class="fa fa-twitter"></a>
+    <a href="https://www.linkedin.com/in/faris-svrakic/" target="_blank" class="fa fa-linkedin"></a>
+    <a href="https://www.instagram.com/faris_svrakic/" target="_blank" class="fa fa-instagram"></a>
+  </div>-->
+</div>

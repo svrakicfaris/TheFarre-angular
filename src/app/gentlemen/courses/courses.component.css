@@ -1,0 +1,172 @@
+.courses{
+  color: white;
+  height: calc(100vh - 58px);
+  display: flex;
+  justify-content: center;
+}
+
+.courses-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 75%;
+}
+
+.course {
+  width: 150px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.course-description{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.course-description .left{
+  width: 30%;
+  padding-top: 20px;
+  padding-right: 2%;
+  padding-left: 1%;
+  border-left: 1px solid #484848;
+}
+
+.course-description .right{
+  width: 70%;
+  padding-top: 20px;
+  padding-right: 1%;
+  padding-left: 3%;
+  border-right: 1px solid #484848;
+}
+
+mat-expansion-panel{
+  background-color: #2c272f;
+}
+mat-panel-title{
+  color: white;
+}
+mat-panel-description{
+  color: white;
+  flex-grow: 0;
+}
+
+:host ::ng-deep .mat-expansion-indicator::after{
+  color: white;
+}
+
+:host ::ng-deep .mat-expansion-panel-body{
+  padding: 0;
+}
+
+:host ::ng-deep .mat-expansion-panel-header{
+  font-family: "Naratif Condensed", 'Oswald', sans-serif;
+  font-size: 24px;
+}
+
+.lesson{
+  color: white;
+  display: flex;
+  min-height: 70px;
+  border-top: 3px solid #19181a;
+  align-items: center;
+  height: fit-content;
+}
+
+.lesson p{
+  margin: 0;
+}
+
+
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 0;
+  border-radius: 3px;
+  min-height: 70px;
+  height: 100%;
+  color: white;
+  width: 100%;
+  background-color: #2c272f;
+  font-family: "Naratif Condensed", 'Oswald', sans-serif;
+}
+
+.button p{
+  font-size: 22px;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.done{
+  background-color: #3c3540;
+}
+
+.selected{
+  background-color: #61058d;
+  color: white;
+}
+
+.blocked{
+  background-color: #3c3540;
+  color: white;
+  cursor: unset;
+}
+
+.continue{
+  width:fit-content;
+}
+
+.button-container{
+  margin: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+.lecture{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lecture  p{
+  font-size: 28px;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: #292929;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.iframe-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (height/width) */
+  width: 100%; /* 100% width */
+}
+
+.iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,242 @@
+.courses{
+  display: flex;
+  height: calc(100vh - 58px);
+  padding: 12% 12%;
+}
+
+.course-container{
+  display: flex;
+}
+
+.course-list {
+  width: 30%;
+  margin-right: 10px;
+  color: white;
+  font-size: 22px;
+  background-color: #2b292d;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-box {
+  cursor: pointer;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px #ccc;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+input{
+  width: 110px;
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+}
+
+.course-list .course:hover {
+  background-color: #4f0e55;
+}
+
+.course-list .selected {
+  background-color: #4f0e55;
+}
+
+.add-course{
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  background-color: #3b3b3b;
+  width: 100%;
+  border: 0;
+  color: white;
+}
+.add-course:hover{
+  background-color: #606060;
+}
+
+.course-description {
+  width: 70%;
+  background-color: transparent;
+  padding: 10px;
+}
+mat-expansion-panel{
+  background-color: #2c272f;
+}
+mat-expansion-panel-header{
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 100;
+}
+mat-panel-title{
+color: white;
+align-items: center;
+}
+mat-panel-description{
+color: white;
+flex-grow: 0;
+}
+
+:host ::ng-deep .mat-expansion-panel-content{
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+:host ::ng-deep .mat-expansion-indicator::after{
+color: white;
+}
+
+:host ::ng-deep .mat-expansion-panel-body{
+padding: 0 0 16px;
+}
+
+.lessons{
+
+}
+
+.lesson{
+display: flex;
+align-items: center;
+margin: 15px 0;
+padding: 0 24px;
+color: white;
+justify-content: space-between;
+}
+
+.text{
+margin: 0;
+}
+
+.button{
+display: flex;
+align-items: center;
+height: 32px;
+border: 0;
+border-radius: 3px;
+}
+
+.buttons{
+display: flex;
+}
+
+.done{
+background-color: #3c3540;
+}
+
+.current{
+background-color: #61058d;
+color: white;
+}
+
+.blocked{
+background-color: #3c3540;
+color: white;
+}
+
+.edit{
+background-color: #296a7d;
+}
+
+.delete{
+background-color: #761818;
+margin-left: 5px;
+}
+
+.cancel{
+margin-left: 5px;
+}
+
+.save{
+background-color: #a99300;
+margin-left: 5px;
+}
+
+.bottom .save{
+width: 100%;
+margin-left: 0;
+display: flex;
+justify-content: center;
+}
+
+.cdk-drag-preview {
+box-sizing: border-box;
+border-radius: 4px;
+box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+0 8px 10px 1px rgba(0, 0, 0, 0.14),
+0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+:host ::ng-deep .cdk-drag-placeholder {
+color: white !important;
+opacity: 0;
+}
+
+:host ::ng-deep .cdk-drag-dragging {
+color: white !important;
+}
+
+.cdk-drag-animating {
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+/*MODULE*/
+
+.add-module{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  background-color: #3b3b3b;
+  width: 100%;
+  height: 48px;
+  border: 0;
+  color: white;
+}
+.add-module:hover{
+  background-color: #606060;
+}
+
+/*LECTURE*/
+
+.add-lecture{
+  padding: 0 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  background-color: #3b3b3b;
+  height: 32px;
+  border: 0;
+  color: white;
+}
+.add-lecture:hover{
+  background-color: #606060;
+}
+
+.data{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.data input{
+  width: 100%;
+  font-size: 14px;
+}

@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="header">
+    <button mat-button
+            (click)="redirectBack()"
+            class="button short">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <div class="dropdown-container">
+      <button mat-button class="button regular">
+        Home
+      </button>
+      <div class="dropdown-menu">
+        <button mat-menu-item class="button regular" (click)="handleRoute('wcid')">what can i do</button>
+      </div>
+    </div>
+
+    <div class="dropdown-container">
+      <button mat-button class="button regular">
+        Utilities
+      </button>
+      <div class="dropdown-menu">
+        <button mat-menu-item class="button regular" (click)="handleRoute('encyclopedia')">Encyclopedia</button>
+      </div>
+    </div>
+
+    <div class="dropdown-container">
+      <button mat-button class="button regular">
+        Gentlemen
+      </button>
+      <div class="dropdown-menu">
+        <button mat-menu-item class="button regular" (click)="handleRoute('channels')">Channels</button>
+        <button mat-menu-item class="button regular" (click)="handleRoute('courses')">Courses</button>
+      </div>
+    </div>
+
+    <!-- Newsletter Dropdown -->
+    <div class="dropdown-container">
+      <button mat-button class="button regular">
+        Newsletter
+      </button>
+      <div class="dropdown-menu">
+        <button mat-menu-item class="button regular" (click)="handleRoute('newsletter-email')">Create Email</button>
+        <button mat-menu-item class="button regular" (click)="handleRoute('newsletter-list')">List Email</button>
+        <button mat-menu-item class="button regular" (click)="handleRoute('newsletter-calendar')">Calendar Email</button>
+      </div>
+    </div>
+
+    <button mat-button style="width: 64px">
+    </button>
+  </div>
+</div>

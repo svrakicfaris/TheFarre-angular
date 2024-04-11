@@ -1,0 +1,11 @@
+.soon{
+  height: calc(100vh - 268px);
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+p{
+  margin: auto;
+  font-size: 100px;
+}

@@ -1,0 +1,13 @@
+<div class="email-preview">
+  <div class="top">
+    <h2>{{ data.subject }}</h2>
+    <button class="regular button" (click)="editEmail()">Edit</button> <!-- Add the edit button -->
+  </div>
+  <p>{{ data.scheduleDate | date: 'yyyy-MM-dd' }}</p>
+  <p>{{ data.scheduleTime | date: 'HH:mm' }}</p>
+
+  <div [innerHTML]="this.html" class="article-text">
+  </div>
+
+</div>
+

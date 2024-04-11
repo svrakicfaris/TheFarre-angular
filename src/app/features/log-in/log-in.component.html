@@ -1,0 +1,25 @@
+<div class="login">
+  <form (submit)="handleFormSubmit()" [formGroup]="form" class="container">
+    <div class="form-field">
+      <input type="text"
+             placeholder="Username"
+             formControlName="username"
+             [class.missing-field]="isFieldMissing('username')">
+    </div>
+
+    <div class="form-field">
+      <input type="password"
+             placeholder="Password"
+             formControlName="password"
+             [class.missing-field]="isFieldMissing('password')">
+    </div>
+
+    <button class="button-regular"
+            type="submit"
+            aria-label="submit">
+      Log in
+    </button>
+  </form>
+
+  <p>Don't have an account? <a href="{{pathToSignup}}">Signup Here!</a></p>
+</div>

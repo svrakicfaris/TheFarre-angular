@@ -1,0 +1,72 @@
+.form-container{
+
+}
+
+.email-upload-form{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  margin: 10px 40px;
+}
+
+.upload-left{
+  width: 75%;
+  color: white;
+}
+
+.input-field{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.label{
+  font-size: 21px;
+}
+
+.input{
+  background: #303030;
+  border: 1px solid #dedede;
+  font-size: 25px;
+  color: white;
+}
+
+:host ::ng-deep .angular-editor-button{
+  background-color: #303030 !important;
+}
+
+:host ::ng-deep .angular-editor-toolbar{
+  background-color: #575757 !important;
+}
+
+:host ::ng-deep .fa{
+  color: white;
+}
+
+:host ::ng-deep .angular-editor-textarea{
+  background-color: #cfcfcf !important;
+  color: black !important;
+}
+
+.upload-right{
+  display: flex;
+  color: white;
+  width: 25%;
+  flex-direction: column;
+  padding: 0 25px;
+}
+
+.button{
+  border-radius: 4px;
+  border: 0;
+  margin: 5px;
+  font-size: 21px;
+}
+
+.regular{
+  background-color: #4a8697;
+}
+
+.special{
+  background-color: #9a2f2f;
+}

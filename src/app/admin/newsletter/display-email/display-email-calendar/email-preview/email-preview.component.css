@@ -1,0 +1,28 @@
+.email-preview {
+  width: calc(80vw - 48px);
+  max-height: 80vh; /* Set the maximum height to 80% of the viewport height */
+  overflow-y: auto; /* Enable vertical scrolling if necessary */
+}
+
+
+.top{
+  display: flex;
+  justify-content: space-between;
+}
+
+.top h2{
+  margin: 0;
+}
+
+.button{
+  border: 0;
+  margin: 5px;
+  min-width: 50px;
+  font-size: 21px;
+  min-height: 40px;
+  border-radius: 4px;
+}
+
+.regular{
+  background-color: #4a8697;
+}

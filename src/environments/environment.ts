@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://127.0.0.1:5000',
+  pythonUrl: 'http://127.0.0.1:5000',
+  localNodeUrl: 'http://127.0.0.1:3000',
+  serverNodeUrl: 'http://127.0.0.1:3001',
 };
 
 /*

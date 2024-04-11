@@ -1,0 +1,37 @@
+<div class="image-upload-container">
+  <input type="file" accept="image/*" (change)="fileChangeEvent($event)" />
+
+  <div class="image-preview" *ngIf="!isCropped">
+    <image-cropper
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [containWithinAspectRatio]="containWithinAspectRatio"
+      [aspectRatio]="1"
+      [onlyScaleDown]="true"
+      [roundCropper]="false"
+      [alignImage]="'left'"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady($event)"
+      (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+    <button mat-raised-button color="primary" (click)="saveCroppedImage()" [disabled]="croppedImage === ''">Save</button>
+  </div>
+
+  <div class="cropped-image-preview" *ngIf="isCropped">
+    <h3>Cropped Image Preview</h3>
+    <div class="image-container">
+      <img class="cropped-image" [src]="croppedImage" alt="Cropped Image" />
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="confirmCroppedImage()">Confirm</button>
+      <button mat-raised-button color="warn" (click)="cancelCropping()">Cancel</button>
+    </div>
+  </div>
+
+
+  <div class="buttons" *ngIf="!croppedImage && !isCropped">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  </div>
+</div>

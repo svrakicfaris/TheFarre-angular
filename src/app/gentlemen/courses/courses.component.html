@@ -1,0 +1,73 @@
+<div class="courses" >
+  <div class="courses-list" *ngIf="!selectedCourse">
+    <h2>Gentleman courses</h2>
+    <div class="course-grid">
+      <div class="course" *ngFor="let course of courses" (click)="selectCourse(course)">
+        {{ course.name }}
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="course-description" *ngIf="selectedCourse">
+    <div class="left">
+      <mat-accordion #accordion>
+        <ng-container *ngFor="let module of selectedCourse.modules">
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            (click)="selectModule(module)"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ module.name }}
+              </mat-panel-title>
+              <mat-panel-description>
+                <mat-icon *ngIf="isModuleCompleted(module._id)" style="color: #00d400;">check</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="lessons">
+              <div class="lesson" *ngFor="let lecture of module.lectures; index as lectureIndex">
+                <button *ngIf="isPreviousLectureCompleted(module, lectureIndex) === 'check'"
+                        class="button done"
+                        [class.selected]="isLectureSelected(lecture)"
+                        (click)="selectLecture(lecture)">
+                  <p class="text">{{ lecture.name }}</p>
+                  <mat-icon style="color: #00d400;">check</mat-icon>
+                </button>
+                <button *ngIf="isPreviousLectureCompleted(module, lectureIndex) === 'button'"
+                        class="button current"
+                        [class.selected]="isLectureSelected(lecture)"
+                        (click)="selectLecture(lecture)">
+                  <p class="text">{{ lecture.name }}</p>
+                </button>
+                <button *ngIf="isPreviousLectureCompleted(module, lectureIndex) === 'null'" class="button blocked">
+                  <p class="text">{{ lecture.name }}</p>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </ng-container>
+      </mat-accordion>
+    </div>
+    <div class="right">
+      <div class="lecture" *ngIf="this.selectedLecture">
+        <div class="lecture-header">
+          <p>{{ this.selectedLecture.name}}</p>
+        </div>
+        <div *ngIf="isLoading" class="loading-circle">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!isLoading" class="iframe-wrapper">
+          <iframe width="100%" [src]="videoUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen (load)="onIframeLoad()"></iframe>
+        </div>
+        <div class="button-container" *ngIf="!isLectureCompleted2(this.selectedLecture._id!)" mat-dialog-actions>
+          <button class="button continue" mat-raised-button color="primary" (click)="finishLecture(this.selectedLecture._id!)">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

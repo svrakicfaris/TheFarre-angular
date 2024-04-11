@@ -1,0 +1,30 @@
+<div class="header">
+  <button mat-button
+          (click)="redirectToHome()"
+          class="button short">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-button
+          (click)="redirectToLearn()"
+          class="button long">
+    COURSES
+  </button>
+  <button mat-button
+          (click)="redirectToGenlemen()"
+          class="button long">
+    DISCOURSE
+  </button>
+  <button mat-button
+          (click)="redirectToGenlemen()"
+          class="button long">
+    ENCYCLOPEDIA
+  </button>
+  <button mat-button
+          (click)="redirectToAccount()"
+          class="button short">
+    <img *ngIf="getUserImage(); else noProfilePhoto" [src]="getUserImage()" alt="Profile Picture" class="profile-image">
+    <ng-template #noProfilePhoto>
+      <mat-icon class="account-icon">account_circle</mat-icon>
+    </ng-template>
+  </button>
+</div>

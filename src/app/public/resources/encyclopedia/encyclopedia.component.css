@@ -1,0 +1,91 @@
+.encyclopedia{
+  color: white;
+  height: calc(100vh - 58px);
+  display: flex;
+  justify-content: center;
+}
+
+.categories{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.categories h2{
+  text-align: center;
+  font-size: 34px;
+  margin: 15px;
+}
+
+.categories-list{
+
+}
+
+.category-container{
+  height: 100px;
+  width: 25%;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.category-info{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.category-info .left{
+  width: 30%;
+  padding-top: 20px;
+  padding-right: 2%;
+  padding-left: 1%;
+  border-left: 1px solid #484848;
+}
+
+.category-info .right{
+  width: 70%;
+  padding-top: 20px;
+  padding-right: 1%;
+  padding-left: 3%;
+  border-right: 1px solid #484848;
+}
+
+.button{
+  border: 0;
+  background-color: transparent;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.button:hover{
+
+}
+
+/* Apply additional padding for deeper levels */
+.subcategory-list .subcategory-list {
+  margin-left: 15px; /* Add more padding as needed */
+}
+
+.subcategory-list .subcategory-list .subcategory-list {
+  margin-left: 30px; /* Add more padding as needed */
+}
+
+.subcategory-header{
+  font-size: 30px;
+  background-color: #333333;
+  padding: 0 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.subcategory-header:hover{
+  background-color: #464646;
+}
+
+p{
+  font-size: 24px;
+}

@@ -1,0 +1,51 @@
+<div class="signup">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="container">
+
+    <div class="form-field">
+      <input type="text"
+             placeholder="First name"
+             [formControlName]="userProperty.firstName"
+             [class.missing-field]="isFieldMissing('firstName')">
+    </div>
+
+    <div class="form-field">
+      <input type="text"
+             placeholder="Last name"
+             [formControlName]="userProperty.lastName"
+             [class.missing-field]="isFieldMissing('lastName')">
+    </div>
+
+    <div class="form-field">
+      <input type="text"
+             placeholder="Username"
+             [formControlName]="userProperty.username"
+             [class.missing-field]="isFieldMissing('username')">
+    </div>
+
+
+    <div class="form-field">
+      <input type="email"
+             placeholder="Email"
+             [formControlName]="userProperty.email"
+             [class.missing-field]="isFieldMissing('email')">
+    </div>
+
+    <div class="form-field">
+      <input type="password"
+             placeholder="Password"
+             [formControlName]="userProperty.password"
+             [class.missing-field]="isFieldMissing('password')">
+    </div>
+
+
+    <button class="button-regular"
+            type="submit"
+            aria-label="submit">
+      Sign Up
+    </button>
+
+  </form>
+
+  <p>Already have an account? <a href="{{pathToLogin}}">Login Here!</a></p>
+
+</div>

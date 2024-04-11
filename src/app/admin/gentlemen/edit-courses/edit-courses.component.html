@@ -1,0 +1,107 @@
+<div class="courses">
+  <div class="course-list" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="top">
+      <div class="course-box" *ngFor="let course of courses" (click)="selectCourse(course)" [class.selected]="isCourseSelected(course)" cdkDrag>
+        <div *ngIf="course !== editedCourse">
+          {{ course.name }}
+        </div>
+        <div *ngIf="course === editedCourse">
+          <input type="text" [(ngModel)]="editedCourse.name">
+        </div>
+        <div class="buttons">
+          <button *ngIf="course !== editedCourse" class="edit button" (click)="editCourseName(course); $event.stopPropagation()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button *ngIf="course !== editedCourse" class="delete button" (click)="deleteCourse(course); $event.stopPropagation()">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button *ngIf="course === editedCourse" class="save button" (click)="saveCourseName(); $event.stopPropagation()">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button *ngIf="course === editedCourse" class="cancel button" (click)="cancelEditCourseName(); $event.stopPropagation()">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div>
+
+      </div>
+      <button class="add-course" (click)="createCourse()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="bottom">
+      <button *ngIf="this.differentCoursesOrder" (click)="saveCourseOrder()" class="save button">
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="course-description" *ngIf="selectedCourse">
+    <mat-accordion cdkDropList (cdkDropListDropped)="dropModules($event)">
+      <ng-container *ngFor="let module of selectedCourse.modules">
+        <mat-expansion-panel
+          (click)="selectModule(module)"
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+          cdkDrag
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title *ngIf="module !== editedModule">
+              {{ module.name }}
+            </mat-panel-title>
+            <mat-panel-title *ngIf="module === editedModule">
+              <input type="text" [(ngModel)]="editedModule.name" (keydown)="onInputKeyDown($event)" (click)="onInputClick($event)">
+            </mat-panel-title>
+            <mat-panel-description>
+              <button *ngIf="module !== editedModule" class="edit button" (click)="editModule(module); $event.stopPropagation()">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button *ngIf="module !== editedModule" class="delete button" (click)="deleteModule(module); $event.stopPropagation()">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button *ngIf="module === editedModule" class="save button" (click)="saveModule(); $event.stopPropagation()">
+                <mat-icon>save</mat-icon>
+              </button>
+              <button *ngIf="module === editedModule" class="cancel button" (click)="cancelEditModule(); $event.stopPropagation()">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="lessons">
+            <div class="lesson" *ngFor="let lecture of module.lectures; index as lectureIndex">
+              <div class="data">
+                <p *ngIf="lecture !== editedLecture" class="text">{{ lectureIndex + 1 }} {{ lecture.name }}</p>
+                <input *ngIf="lecture === editedLecture" type="text" [(ngModel)]="editedLecture.name" (click)="onInputClick($event)">
+                <input *ngIf="lecture === editedLecture" type="text" [(ngModel)]="editedLecture.videoLink" (click)="onInputClick($event)">
+              </div>
+              <div class="buttons">
+                <button *ngIf="lecture !== editedLecture" class="edit button" (click)="editLecture(lecture); $event.stopPropagation()">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button *ngIf="lecture !== editedLecture" class="delete button" (click)="deleteLecture(lecture); $event.stopPropagation()">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button *ngIf="lecture === editedLecture" class="save button" (click)="saveLecture(); $event.stopPropagation()">
+                  <mat-icon>save</mat-icon>
+                </button>
+                <button *ngIf="lecture === editedLecture" class="cancel button" (click)="cancelEditLecture(); $event.stopPropagation()">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </div>
+            </div>
+            <button class="add-lecture" (click)="createLecture(); $event.stopPropagation()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </mat-expansion-panel>
+      </ng-container>
+      <button class="add-module" (click)="createModule()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-accordion>
+    <div class="bottom">
+      <button *ngIf="this.differentModulesOrder"  (click)="saveModulesOrder()" class="save button">
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

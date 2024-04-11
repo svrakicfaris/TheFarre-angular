@@ -1,0 +1,223 @@
+.encyclopedia{
+  color: white;
+  height: calc(100vh - 58px);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.categories{
+  width: 100%;
+  margin: 0 5%;
+  display: flex;
+  flex-direction: column;
+}
+.categories h2{
+  text-align: center;
+  font-size: 34px;
+  margin: 15px;
+}
+
+.categories-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.category-container{
+  height: 150px;
+  width: 150px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.add-category-button{
+  height: 150px;
+  width: 150px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #2b2a2d;
+  color: white;
+  font-size: 58px;
+  font-family: fangsong;
+}
+
+.add-category-button:hover{
+  background-color: #403e42;
+}
+
+.category-info{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.category-info .left{
+  width: 40%;
+  padding-top: 20px;
+  padding-right: 2%;
+  padding-left: 1%;
+  border-left: 1px solid #484848;
+}
+
+.category-info .right{
+  width: 60%;
+  padding-top: 20px;
+  padding-right: 1%;
+  padding-left: 3%;
+  border-right: 1px solid #484848;
+}
+
+.buttons{
+  display: flex;
+}
+
+.button{
+  display: flex;
+  align-items: center;
+  height: 32px;
+  border: 0;
+  border-radius: 3px;
+}
+
+.arrow{
+  background-color: transparent;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.button:hover{
+
+}
+
+.current{
+  background-color: #61058d !important;
+  color: white;
+}
+
+.blocked{
+  background-color: #3c3540;
+  color: white;
+}
+
+.edit{
+  background-color: #296a7d;
+}
+
+.delete{
+  background-color: #761818;
+  margin-left: 5px;
+}
+
+.cancel{
+  margin-left: 5px;
+}
+
+.save{
+  background-color: #a99300;
+  margin-left: 5px;
+}
+
+.add{
+  background-color: #333333;
+  width: 100%;
+  padding: 0 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  color: #f4f4f4;
+  align-items: center;
+}
+
+p{
+  margin: 0;
+  font-size: 24px;
+}
+/* Apply additional padding for deeper levels */
+.subcategory-list .subcategory-list {
+  margin-left: 20px; /* Add more padding as needed */
+}
+.subcategory-list .subcategory-list .subcategory-list {
+  margin-left: 40px; /* Add more padding as needed */
+}
+/* Apply additional padding for deeper levels */
+.subcategory-list .subcategory-list .subcategory-list .subcategory-list {
+  margin-left: 60px; /* Add more padding as needed */
+}
+
+
+.subcategory-list p{
+  font-size: 34px;
+}
+.subcategory-list .subcategory-list p{
+  font-size: 30px;
+}
+.subcategory-list .subcategory-list .subcategory-list p{
+  font-size: 26px;
+}
+
+.subcategory-header{
+  font-size: 30px;
+  background-color: #333333;
+  padding: 0 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subcategory-header:hover{
+  background-color: #464646;
+}
+
+h2{
+  text-align: center;
+  font-size: 34px;
+}
+
+.input-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form input{
+  margin: 10px 0;
+}
+
+.image-upload{
+  width: 20%;
+}
+
+.example-box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.image-preview{
+  width: 60%;
+}
+
+.image-buttons{
+  height: 100px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 5px;
+}
+
+:host ::ng-deep #sourceText{
+  background-color: rgb(61 52 0) !important;
+}

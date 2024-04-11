@@ -1,0 +1,95 @@
+<div class="discourse">
+
+  <div class="sidebar" *ngIf="!channelsLoading; else channelSpinner">
+    <p class="title left-side-padding">Channels</p>
+    <div class="channels" *ngIf="channels.length > 0">
+    <span class="channel left-side-padding"
+          *ngFor="let channel of channels"
+          (click)="changeChannel(channel)"
+          [class.selected]="channel === currentChannel">
+      {{ channel.name }}
+    </span>
+    </div>
+    <div class="channels" *ngIf="channels.length === 0">
+      <span class="no-channels">Channels unavailable</span>
+    </div>
+  </div>
+
+  <ng-template #channelSpinner>
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  </ng-template>
+
+  <div class="content">
+    <div class="channel-title">
+      <span>{{currentChannel.name}}</span>
+    </div>
+
+    <div class="chat" *ngIf="!messagesLoading; else messagesSpinner" #chatContainer (scroll)="onScroll()">
+      <div *ngIf="messages.length > 0; else noMessages">
+        <div *ngFor="let message of messages; let i = index" class="message" [attr.data-message-id]="message._id">
+
+          <div [ngClass]="{'messages-right': message.user.username == getUserUsername(), 'messages-left': message.user.username != getUserUsername()}">
+            <div class="user-profile" *ngIf="i === 0 || message.user.username !== messages[i - 1]?.user?.username; else regularMessage">
+              <img *ngIf="message.user.imageURL; else noProfilePhoto" [src]="message.user.imageURL" alt="Profile Picture" class="profile-image">
+              <ng-template #noProfilePhoto>
+                <mat-icon class="account-icon">account_circle</mat-icon>
+              </ng-template>
+              <div class="message-username" (contextmenu)="onMessageContextMenu($event, message)">
+                <span class="user-username">{{ message.user.username }}</span>
+                <span class="message-text">
+                {{ message.text }}
+                </span>
+                <span class="message-details">{{ message.date | date }} - {{ message.time }}</span>
+              </div>
+            </div>
+            <ng-template #regularMessage>
+              <div class="message-regular" (contextmenu)="onMessageContextMenu($event, message)">
+                <span class="message-text">
+                {{ message.text }}
+                </span>
+                <span class="message-details">{{ message.date | date }} - {{ message.time }}</span>
+              </div>
+            </ng-template>
+          </div>
+          <div *ngIf="message._id === getLastMessageId()" class="new-message">
+            <p class="new-message-text">New Messages</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Context menu container -->
+    <div class="context-menu" *ngIf="showContextMenu" [style.left.px]="contextMenuX" [style.top.px]="contextMenuY">
+      <ul>
+        <li (click)="editMessage(selectedMessage)">Edit</li>
+        <li (click)="deleteMessage(selectedMessage)">Delete</li>
+        <!-- Add more context menu options as needed -->
+      </ul>
+    </div>
+
+    <ng-template #messagesSpinner>
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+      </div>
+    </ng-template>
+    <ng-template #noMessages>
+      <div class="no-chat">Currently unavailable</div>
+    </ng-template>
+
+    <div class="message-input">
+      <input type="text" [(ngModel)]="newMessageText" placeholder="Enter your message">
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <!--<div class="notification-bar">
+    <h3>Notifications</h3>
+    <ul>
+      &lt;!&ndash;<li *ngFor="let notification of notifications">
+        {{ notification }}
+      </li>&ndash;&gt;
+    </ul>
+  </div>-->
+</div>

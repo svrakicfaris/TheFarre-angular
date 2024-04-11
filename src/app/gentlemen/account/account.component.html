@@ -1,0 +1,100 @@
+<div class="account">
+  <div class="left">
+    <div class="newsletter">
+      <div class="background-image"></div>
+      <div *ngIf="!this.user.newsletter; else subscribed" class="newsletter-vertical">
+        <h4>Be valuable</h4>
+        <h2>Gentlemen newsletter</h2>
+        <h3>FREE guide on gentlemen behaviour</h3>
+        <button (click)="subscribeToNewsletter()">Subscribe</button>
+        <div class="error-message">{{ emailExists ? 'Email already exists!' : ' ' }}</div>
+      </div>
+    </div>
+
+    <ng-template #subscribed>
+      <div class="newsletter-vertical">
+        <h3>You are already subscribed to my newsletter</h3>
+        <button (click)="unsubscribeUser()">Unsubscribe</button>
+      </div>
+    </ng-template>
+
+  </div>
+  <div class="center">
+    <button mat-button class="button" (click)="redirectToAdmin()">
+      Admin Panel
+    </button>
+    <div class="profile-picture">
+      <!-- Display user profile picture here -->
+      <img src="{{user.imageURL}}" alt="Profile Picture">
+      <button *ngIf="isEditingProfile" mat-raised-button (click)="openDialog()" class="">Change picture</button>
+    </div>
+    <div class="user-info" *ngIf="!isEditingProfile">
+      <div class="info-field">
+        <p>First name: </p>
+        <p> {{user.firstName}}</p>
+      </div>
+      <div class="info-field">
+        <p>Last name: </p>
+        <p> {{user.lastName}}</p>
+      </div>
+      <div class="info-field">
+        <p>Gender:</p>
+        <p>{{user.gender}}</p>
+      </div>
+      <div class="info-field">
+        <p>Username: </p>
+        <p>{{user.username}}</p>
+      </div>
+      <div class="info-field">
+        <p>Email: </p>
+        <p>{{user.email}}</p>
+      </div>
+    </div>
+
+    <div *ngIf="isEditingProfile">
+      <div class="user-info">
+        <div class="edit-field">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" [(ngModel)]="editedUser.firstName" required>
+        </div>
+        <div class="edit-field">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" [(ngModel)]="editedUser.lastName" required>
+        </div>
+        <div class="edit-field">
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" [(ngModel)]="editedUser.gender" required>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+          </select>
+        </div>
+        <div class="edit-field">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" [(ngModel)]="editedUser.username" required>
+        </div>
+        <div class="edit-field">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="editedUser.email" required>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button mat-button *ngIf="!isEditingProfile" (click)="enableEditMode()" class="button">
+        Edit Profile
+      </button>
+      <button mat-button *ngIf="!isEditingProfile" (click)="logout()" class="button">
+        Logout
+      </button>
+      <button mat-button *ngIf="isEditingProfile" (click)="saveProfileChanges()" class="button">
+        Save Changes
+      </button>
+      <button mat-button *ngIf="isEditingProfile" (click)="cancelEditMode()" class="button">
+        Cancel
+      </button>
+
+    </div>
+  </div>
+  <div class="right">
+    <p>Subscription</p>
+  </div>
+</div>

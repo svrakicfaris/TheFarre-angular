@@ -1,0 +1,52 @@
+<div class="channel-container">
+  <div class="left">
+    <p>Channels</p>
+    <div cdkDropList class="drag-drop-list" (cdkDropListDropped)="onDrop($event)">
+      <div class="example-box" *ngFor="let channel of channels" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <div class="text">
+          <span class="big">{{ channel.name }}</span>
+        </div>
+        <div class="options">
+          <button *ngIf="!isEditingChannel; else cancelEdit"
+                  (click)="insertForm(channel)"
+                  class="edit-button"
+                  mat-flat-button
+                  color="primary">
+            Edit
+          </button>
+          <button (click)="removeChannel(channel._id)"
+                  class="edit-button"
+                  mat-flat-button
+                  color="warn">
+            Delete
+          </button>
+        </div>
+        <ng-template #cancelEdit>
+          <button (click)="cancelEditing()"
+                  class="edit-button"
+                  mat-flat-button
+                  color="warn">
+            Cancel
+          </button>
+        </ng-template>
+      </div>
+    </div>
+    <button (click)="updateChannels()"
+            mat-flat-button
+            color="primary">
+      Upload
+    </button>
+  </div>
+
+  <div class="right">
+    <h2>{{ isEditingChannel ? 'Edit Entry' : 'Create New Entry' }}</h2>
+    <form (ngSubmit)="handleSubmit()">
+      <div class="input-field">
+        <label for="channelName">Work:</label>
+        <input type="text" id="channelName" name="channelName" [(ngModel)]="name" required>
+      </div>
+      <button type="submit">{{ isEditingChannel ? 'Update' : 'Create' }}</button>
+    </form>
+  </div>
+</div>

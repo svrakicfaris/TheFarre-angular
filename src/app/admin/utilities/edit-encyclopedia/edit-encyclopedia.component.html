@@ -1,0 +1,115 @@
+<div class="encyclopedia">
+  <div class="categories" *ngIf="!selectedCategory">
+    <h2>Categories</h2>
+    <div class="categories-list">
+      <div  class="category-container" *ngFor="let category of categories" (click)="selectCategory(category)">
+        {{ category.name }}
+      </div>
+      <button class="add-category-button" (click)="addCategory()">
+        +
+      </button>
+    </div>
+  </div>
+
+  <div class="category-info" *ngIf="selectedCategory">
+    <div class="left">
+      <button class="button arrow" (click)="deselectCategory()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <ng-container *ngTemplateOutlet="recursiveAccordion; context: { subcategories: selectedCategory.subCategories, parent: selectedCategory }"></ng-container>
+    </div>
+    <div class="right">
+      <div class="" *ngIf="this.selectedTopic">
+        <div class="lecture-header">
+          <h2 *ngIf="this.selectedTopic !== editingSubcategory">{{ this.selectedTopic.name}}</h2>
+          <input *ngIf="this.selectedTopic === editingSubcategory" type="text" [(ngModel)]="editingSubcategory.name" (click)="onInputClick($event)">
+        </div>
+        <div>
+          <div *ngIf="this.selectedTopic !== editingSubcategory" [innerHtml]="safeHtml"></div>
+          <angular-editor
+            *ngIf="this.selectedTopic === editingSubcategory"
+            [(ngModel)]="editingSubcategory.info"
+            [ngModelOptions]="{standalone: true}"
+            [config]="editorConfig">
+          </angular-editor>
+          <div *ngIf="this.selectedTopic === editingSubcategory">
+            {{editingSubcategory.info}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="image-upload">
+    <form class="input-form">
+      <input type="file" multiple (change)="selectFiles($event)" />
+      <button
+        class="btn btn-success btn-sm"
+        [disabled]="!selectedFiles"
+        (click)="uploadFiles()"
+      >
+        Upload Files
+      </button>
+
+      <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
+        <ul *ngFor="let msg of message; let i = index">
+          <li>{{ msg }}</li>
+        </ul>
+      </div>
+
+      <div *ngIf="imageLinks.length">
+          <div class="example-box" *ngFor="let link of imageLinks">
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            <img class="image-preview" [src]="link">
+            <div class="image-buttons">
+              <button
+                (click)="copyCode(link)"
+                class="edit-button"
+                mat-flat-button
+                color="primary"
+              >
+                <mat-icon>file_copy</mat-icon>
+              </button>
+              <button
+                (click)="removeImage(link)"
+                class="edit-button"
+                mat-flat-button
+                color="warn"
+              >
+                <mat-icon>remove</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #recursiveAccordion let-subcategories='subcategories' let-parent='parent'>
+  <div class="subcategory-list">
+    <div *ngFor="let subcategory of subcategories; let i = index" class="subcategory">
+      <div class="subcategory-header" [class.current]="isSubcategorySelected(subcategory)" (click)="toggleSubcategory(subcategory); selectTopic(subcategory)">
+        <p>{{ subcategory.name }}</p>
+        <div class="buttons">
+          <button *ngIf="subcategory !== editingSubcategory" class="edit button" (click)="editSubcategory(subcategory); $event.stopPropagation()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button *ngIf="subcategory !== editingSubcategory" class="delete button" (click)="deleteSubcategory(parent, subcategory); $event.stopPropagation()">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button *ngIf="subcategory === editingSubcategory" class="save button" (click)="saveSubcategory(parent, subcategory); $event.stopPropagation()">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button *ngIf="subcategory === editingSubcategory" class="cancel button" (click)="cancelEditSubcategory(); $event.stopPropagation()">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="subcategory.expanded">
+        <ng-container *ngTemplateOutlet="recursiveAccordion; context: { subcategories: subcategory.subCategories, parent: subcategory }"></ng-container>
+      </div>
+    </div>
+    <button class="add button" (click)="addSubcategory(parent)">Add Subcategory</button>
+  </div>
+</ng-template>
+
+
